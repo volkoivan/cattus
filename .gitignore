@@ -12,6 +12,12 @@
 /*.userprefs
 /*.pidb
 /*.booproj
+ExportedObj/
+obj/
+/*.svd
+/*.suo
+/*.sln
+/*.unityproj
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
