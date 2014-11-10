@@ -22,11 +22,9 @@ public class Player: MonoBehaviour {
     // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
     private void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("Collider action");
-        if (col.gameObject.tag == "Enemy")
-            Application.LoadLevel(Application.loadedLevel);
-        if (col.gameObject.tag == "Item"){
-            Score++;
-            col.gameObject.SetActive(false);
+        if (col != null){
+            if (col.gameObject.tag == "Enemy")
+                Application.LoadLevel(Application.loadedLevel);
         }
     }
 }
