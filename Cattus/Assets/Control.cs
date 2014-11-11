@@ -10,7 +10,8 @@ public class Control : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.RightArrow)) rigidbody.AddForce(new Vector2 (20,0));
-		if (Input.GetKey(KeyCode.LeftArrow)) rigidbody.AddForce(new Vector2 (-20,0));
+		if (Input.GetKey(KeyCode.RightArrow)) rigidbody.AddForce(new Vector2 (10,0));
+		if (Input.GetKey(KeyCode.LeftArrow)) rigidbody.AddForce(new Vector2 (-10,0));
+		rigidbody.
 	}
 }
