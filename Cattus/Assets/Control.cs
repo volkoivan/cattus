@@ -12,6 +12,5 @@ public class Control : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.RightArrow)) rigidbody.AddForce(new Vector2 (10,0));
 		if (Input.GetKey(KeyCode.LeftArrow)) rigidbody.AddForce(new Vector2 (-10,0));
-		rigidbody.
 	}
 }
