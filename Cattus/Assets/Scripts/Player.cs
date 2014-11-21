@@ -7,10 +7,17 @@ public class Player: MonoBehaviour {
 
     private void Start() {
         Score = 0;
+
+        Debug.Log(Camera.main.orthographicSize);
+        Debug.Log(Camera.main.aspect * Camera.main.orthographicSize);
     }
 
     private void Update() {
         UpdateControl();
+        UpdateSprite();
+
+//        Debug.Log(Screen.width);
+//        Debug.Log(Screen.height);
     }
 
     private void UpdateControl() {
@@ -18,6 +25,9 @@ public class Player: MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftArrow)) rigidbody2D.AddForce(new Vector2(-20, 0));
     }
 
+    private void UpdateSprite() {
+        transform.localScale = rigidbody2D.velocity.x >= 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+    }
 
     // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
     private void OnTriggerEnter2D(Collider2D col) {
