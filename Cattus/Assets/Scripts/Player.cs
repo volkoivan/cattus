@@ -11,7 +11,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-
         UpdateControl();
         UpdateSprite();
         UpdateCollision();
@@ -21,7 +20,7 @@ public class Player : MonoBehaviour {
 
     private void UpdateCollision() {
         Debug.Log(Camera.main.WorldToScreenPoint(transform.position).x);
-        if (Camera.main.ScreenToWorldPoint (transform.position).x > 600)
+        if (Camera.main.ScreenToWorldPoint(transform.position).x > 600)
             Debug.Log("LOH");
     }
 
