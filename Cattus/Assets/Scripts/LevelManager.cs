@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 
-public class LevelManager: MonoBehaviour {
+public class LevelManager : MonoBehaviour {
+    public GameObject obj;
 
     // Use this for initialization
     private void Start() {
         audio.Play();
+
+        var o =
+            Instantiate(obj, Camera.main.ScreenToWorldPoint(new Vector3(600, 600, 0)), Quaternion.identity) as
+                GameObject;
+        o.transform.position = new Vector3(o.transform.position.x, o.transform.position.y, 0);
     }
 
     // Update is called once per frame

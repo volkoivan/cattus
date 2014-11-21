@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Control : MonoBehaviour {
+    // Use this for initialization
+    private void Start() {
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKey(KeyCode.RightArrow)) rigidbody.AddForce(new Vector2 (10,0));
-		if (Input.GetKey(KeyCode.LeftArrow)) rigidbody.AddForce(new Vector2 (-10,0));
-	}
+    // Update is called once per frame
+    private void Update() {
+        if (Input.GetKey(KeyCode.RightArrow)) rigidbody2D.AddForce(new Vector2(5, 0));
+        if (Input.GetKey(KeyCode.LeftArrow)) rigidbody2D.AddForce(new Vector2(-5, 0));
+    }
 }
