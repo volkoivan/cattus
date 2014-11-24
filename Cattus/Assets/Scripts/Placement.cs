@@ -7,7 +7,7 @@ public class Placement : MonoBehaviour {
     private void Start()
     {
         gameObject.transform.position =
-            Camera.main.ScreenToViewportPoint(new Vector3(Camera.main.pixelWidth / 100 * xOffset1,
+            Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth / 100 * xOffset1,
                 Camera.main.pixelHeight / 100 * yOffset1, 1));
     }
 
