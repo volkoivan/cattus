@@ -26,21 +26,14 @@ public class Player : MonoBehaviour {
     } */
 
     private void UpdateControl() {
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if ((Input.GetKeyUp (KeyCode.Space)) || 
+		    ((direction == 1) && (gameObject.transform.position.x + (gameObject.renderer.bounds.size.x / 2) > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)) ||
+		    ((direction == -1) && (gameObject.transform.position.x - (gameObject.renderer.bounds.size.x / 2) < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x))) {
+
 						direction *= -1;
 						rigidbody2D.AddForce (new Vector2 (200 * direction, 0));
 						transform.localScale = new Vector3 (1 * direction, 1, 1);
 				}
-		if ((direction == 1) && (gameObject.transform.position.x + (gameObject.renderer.bounds.size.x / 2) > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)) {
-			direction *= -1;
-			rigidbody2D.AddForce (new Vector2 (200 * direction, 0));
-			transform.localScale = new Vector3 (1 * direction, 1, 1);
-		}
-		if ((direction == -1) && (gameObject.transform.position.x - (gameObject.renderer.bounds.size.x / 2) < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x)) {
-			direction *= -1;
-			rigidbody2D.AddForce (new Vector2 (200 * direction, 0));
-			transform.localScale = new Vector3 (1 * direction, 1, 1);
-		}
     }	
 
     // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
