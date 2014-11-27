@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public int Score;
-	private int direction;
+    public static int Score;
+	public static int direction;
     private void Start() {
         Score = 0;
 		direction = 1; //  1: right;   -1:left;
@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         UpdateControl();
+		Score += 1 / 60;
         //UpdateCollision();
 //        Debug.Log(Screen.width);
 //        Debug.Log(Screen.height);
@@ -41,7 +42,10 @@ public class Player : MonoBehaviour {
         Debug.Log("Collider action");
         if (col != null) {
             if (col.gameObject.tag == "Enemy")
-                Application.LoadLevel(Application.loadedLevel);
+			{
+				GameOverWindow.MakeWindow();
+				Application.LoadLevel(Application.loadedLevel);
+			}
         }
     }
 }
