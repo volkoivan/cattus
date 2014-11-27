@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using Collision = UnityEngine.Collision;
 
 public class Player : MonoBehaviour {
     public int Score;
@@ -40,13 +42,17 @@ public class Player : MonoBehaviour {
         }
     }
 
-    // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
-    private void OnTriggerEnter2D(Collider2D col) {
+    private void OnTriggerEnter2D(Collider2D col)
+    {
         Debug.Log("Collider action");
-        if (col != null) {
+        if (col != null)
+        {
             if (col.gameObject.tag == "Enemy") {
-                GameOver_script.isGameover = true;
+                Pause.isPaused = true;
+                Time.timeScale = 0;
             }
         }
     }
+    // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
+    
 }
