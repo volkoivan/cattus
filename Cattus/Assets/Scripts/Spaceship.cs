@@ -31,6 +31,6 @@ public class Spaceship : Enemy {
 		//if (VSpeed < -0.05f) Direction *= -1;
 		if (gameObject.transform.position.y > Camera.main.ScreenToWorldPoint(new Vector3(0,Screen.height,0)).y)
 			gameObject.transform.position =
-				new Vector3(StartPosition,Camera.main.ScreenToWorldPoint(new Vector3(0,Screen.height,0)).y*(-1), gameObject.transform.position.z);
+				new Vector3(StartPosition,Camera.main.ScreenToWorldPoint(new Vector3(0,0,0)).y, gameObject.transform.position.z);
 	}
 }

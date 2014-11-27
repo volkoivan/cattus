@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class CoinMaker : MonoBehaviour {
-
+    private float timer;
+    private Random randomNum;
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +11,5 @@ public class CoinMaker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
 	}
 }
