@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 
 public class Bird : Enemy {
-
-    private int Direction=1;
     public float AdVel = 0.001f;
+    private int Direction = 1;
 
     // Use this for initialization
     private void Start() {
-
         rigidbody2D.velocity = new Vector2(HSpeed, 0);
-
     }
 
     // Update is called once per frame
@@ -18,7 +15,7 @@ public class Bird : Enemy {
     }
 
     private void UpdateMovement() {
-        gameObject.transform.position+=new Vector3 (HSpeed,VSpeed,0);
+        gameObject.transform.position += new Vector3(HSpeed, VSpeed, 0);
         VSpeed += AdVel*Direction;
         if (VSpeed > 0.05f) Direction *= -1;
         if (VSpeed < -0.05f) Direction *= -1;

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-
-    public float VSpeed=0.01f;
     public float HSpeed = 0.01f;
+    public float VSpeed = 0.01f;
 
     // Use this for initialization
     private void Start() {
