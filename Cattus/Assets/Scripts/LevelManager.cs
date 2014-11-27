@@ -16,7 +16,9 @@ public class LevelManager : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        if (Pause.isPaused == true) {
+        if (Pause.isPaused == true)
+        {
+            Time.timeScale = 0;
             if (Input.GetKeyUp(KeyCode.Space)) {
                 Application.LoadLevel("test");
                 Pause.isPaused = false;
