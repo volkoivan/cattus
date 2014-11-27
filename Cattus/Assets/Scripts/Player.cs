@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 
 public class Player : MonoBehaviour {
-<<<<<<< HEAD
+
     public static int Score;
 	public static int direction;
-=======
-    public int Score;
-    private int direction;
 
->>>>>>> 5ad25376f95b8518d5f351d79e8ae3abff215384
+
     private void Start() {
         Score = 0;
         direction = 1; //  1: right;   -1:left;
@@ -50,17 +47,10 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("Collider action");
         if (col != null) {
-<<<<<<< HEAD
-            if (col.gameObject.tag == "Enemy")
-			{
-				GameOverWindow.MakeWindow();
-				Application.LoadLevel(Application.loadedLevel);
-			}
-=======
             if (col.gameObject.tag == "Enemy") {
                 GameOver_script.isGameover = true;
             }
->>>>>>> 5ad25376f95b8518d5f351d79e8ae3abff215384
+
         }
     }
 }
