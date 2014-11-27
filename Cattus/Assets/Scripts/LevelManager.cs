@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
     public GameObject obj;
@@ -15,5 +16,13 @@ public class LevelManager : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+        if (Pause.isPaused == true) {
+            if (Input.GetKeyUp(KeyCode.Space)) {
+                Application.LoadLevel("test");
+                Pause.isPaused = false;
+                Time.timeScale = 1;
+            }
+        }
+
     }
 }

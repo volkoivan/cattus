@@ -9,8 +9,7 @@ public class Coin : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-//	    transform.Translate(0, -0.02f, 0);
-        transform.position += new Vector3(0, -0.02f, 0);
+        if (Pause.isPaused == false) transform.position += new Vector3(0, -0.02f, 0);
     }
 
 

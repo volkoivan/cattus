@@ -11,7 +11,7 @@ public class Bird : Enemy {
 
     // Update is called once per frame
     private void Update() {
-        UpdateMovement();
+        if (Pause.isPaused == false) UpdateMovement();
     }
 
     private void UpdateMovement() {
