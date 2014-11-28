@@ -1,14 +1,12 @@
-﻿using UnityEditor;
-using UnityEngine;
-using Collision = UnityEngine.Collision;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public float objScale=1;
-    public static int Score;
-	public static int direction;
+    public static int Money;
+    public static int direction;
+    public float objScale = 1;
 
     private void Start() {
-        Score = 0;
+        Money = 0;
         direction = 1; //  1: right;   -1:left;
         transform.localScale = new Vector3(objScale, objScale, objScale);
         rigidbody2D.AddForce(new Vector2(100, 0));
@@ -18,7 +16,6 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         UpdateControl();
-		Score += 1 / 60;
         //UpdateCollision();
 //        Debug.Log(Screen.width);
 //        Debug.Log(Screen.height);
@@ -40,21 +37,18 @@ public class Player : MonoBehaviour {
               Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x))) {
             direction *= -1;
             rigidbody2D.AddForce(new Vector2(200*direction, 0));
-            transform.localScale = new Vector3(objScale * direction, objScale, objScale);
+            transform.localScale = new Vector3(objScale*direction, objScale, objScale);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
+    private void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("Collider action");
-        if (col != null)
-        {
+        if (col != null) {
             if (col.gameObject.tag == "Enemy") {
                 LevelManager.isGameOver = true;
             }
-
         }
     }
+
     // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
-    
 }

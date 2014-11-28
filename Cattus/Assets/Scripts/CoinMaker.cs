@@ -1,9 +1,8 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CoinMaker : MonoBehaviour {
-    private float timer;
     public Coin objCoin;
+    private float timer;
 
     // Use this for initialization
     private void Start() {

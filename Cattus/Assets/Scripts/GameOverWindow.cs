@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class GameOverWindow: MonoBehaviour {
+public class GameOverWindow : MonoBehaviour {
+    // Use this for initialization
+    public static void MakeWindow() {
+    }
 
-	// Use this for initialization
-	public static void MakeWindow () {
-
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Update is called once per frame
+    private void Update() {
+    }
 }
