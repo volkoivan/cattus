@@ -18,6 +18,7 @@ public class Coin : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
+			Player.Score += 10;
             AudioSource.PlayClipAtPoint(CoinPickUp, transform.position);
             Destroy(gameObject);
         }

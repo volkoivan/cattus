@@ -2,7 +2,10 @@
 
 public class TextSettings : MonoBehaviour {
     public GUIStyle CustomFontStyle;
+
     public GUIText GuiText;
+
+
     // Use this for initialization
     private void Start() {
     }
@@ -11,3 +14,4 @@ public class TextSettings : MonoBehaviour {
     private void Update() {
     }
 }
+

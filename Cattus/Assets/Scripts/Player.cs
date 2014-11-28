@@ -3,9 +3,9 @@ using UnityEngine;
 using Collision = UnityEngine.Collision;
 
 public class Player : MonoBehaviour {
-    public int Score;
-    private int direction;
     public float objScale=1;
+    public static int Score;
+	public static int direction;
 
     private void Start() {
         Score = 0;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         UpdateControl();
+		Score += 1 / 60;
         //UpdateCollision();
 //        Debug.Log(Screen.width);
 //        Debug.Log(Screen.height);
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour {
             if (col.gameObject.tag == "Enemy") {
                 LevelManager.isGameOver = true;
             }
+
         }
     }
     // IsTrigger вызывает следующие методы: OnTriggerEnter, OnTriggerExit, OnTriggerStay
