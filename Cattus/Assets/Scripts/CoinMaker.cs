@@ -9,11 +9,13 @@ public class CoinMaker : MonoBehaviour {
     private void Start() {
     }
 
+    // Update is called once per frame
+
     private void Update() {
         MakeCoins();
     }
 
-    // Update is called once per frame
+    //каждые 
     public void MakeCoins() {
         timer += Time.deltaTime;
         if (timer > Random.Range(1f, 2f)) {
