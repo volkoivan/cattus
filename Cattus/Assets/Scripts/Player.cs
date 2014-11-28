@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
     } */
 
     private void UpdateControl() {
-        if ((Input.GetKeyUp(KeyCode.Space)) ||
+        if ((Input.GetKeyUp(KeyCode.Space) && !Pause.isPaused) ||
             ((direction == 1) &&
              (gameObject.transform.position.x + (gameObject.renderer.bounds.size.x/2) >
               Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)) ||
@@ -49,8 +49,7 @@ public class Player : MonoBehaviour {
         if (col != null)
         {
             if (col.gameObject.tag == "Enemy") {
-                Pause.isPaused = true;
-                Time.timeScale = 0;
+                LevelManager.isGameOver = true;
             }
         }
     }

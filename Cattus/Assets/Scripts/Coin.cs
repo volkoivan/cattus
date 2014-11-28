@@ -12,7 +12,7 @@ public class Coin : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        if (Pause.isPaused == false) transform.position += new Vector3(0, -0.02f, 0);
+        if (Pause.isPaused == false) transform.position += new Vector3(0, -0.04f, 0);
     }
 
 
