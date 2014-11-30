@@ -5,8 +5,8 @@ public class BackGround : MonoBehaviour {
     private void Start() {
         transform.position = new Vector3(0,
             Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, 0, 0)).y + gameObject.renderer.bounds.size.y/2,
-            10);
-        rigidbody2D.velocity = (new Vector2(0, -0.3f));
+            transform.position.z);
+        rigidbody2D.velocity = (new Vector2(0, -0.1f));
     }
 
 

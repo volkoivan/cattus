@@ -13,6 +13,7 @@ public class Coin : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         if (Pause.isPaused == false) transform.position += new Vector3(0, -0.04f, 0);
+        if (transform.position.y < Camera.main.ScreenToWorldPoint(new Vector3(0, -Screen.height/2, 0)).y) Destroy(gameObject);
     }
 
 
