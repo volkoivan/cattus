@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
     public GameObject obj;
+	public GameObject _gameover;
+	public static int isGameOverCreated = 0;
     public static bool isGameOver = false;
-
     // Use this for initialization
     private void Start() {
         audio.Play();
@@ -13,7 +14,6 @@ public class LevelManager : MonoBehaviour {
                 GameObject;
         o.transform.position = new Vector3(o.transform.position.x, o.transform.position.y, 0);
     }
-
     // Update is called once per frame
     private void Update() {
         // нажатие P - пауза
@@ -21,9 +21,12 @@ public class LevelManager : MonoBehaviour {
             SetOnPause();
         }
 
-
         if (isGameOver) {
             SetOnPause();
+			if (LevelManager.isGameOverCreated == 0){
+				GameOverMaker();
+				LevelManager.isGameOverCreated = 1;
+			}
             if (Input.GetKeyUp(KeyCode.Space)) {
                 isGameOver = false;
                 Application.LoadLevel("test");
@@ -38,7 +41,9 @@ public class LevelManager : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.P)) ResumeGame();
         }
     }
-
+	public void GameOverMaker(){
+		Instantiate(_gameover);
+	}
     private void SetOnPause() {
         Pause.isPaused = true;
         Time.timeScale = 0;
