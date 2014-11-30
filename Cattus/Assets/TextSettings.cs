@@ -14,4 +14,3 @@ public class TextSettings : MonoBehaviour {
     private void Update() {
     }
 }
-

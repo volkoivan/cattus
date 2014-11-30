@@ -1,19 +1,20 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CoinMaker : MonoBehaviour {
-    private float timer;
     public Coin objCoin;
+    private float timer;
 
     // Use this for initialization
     private void Start() {
     }
 
+    // Update is called once per frame
+
     private void Update() {
         MakeCoins();
     }
 
-    // Update is called once per frame
+    //каждые 
     public void MakeCoins() {
         timer += Time.deltaTime;
         if (timer > Random.Range(1f, 2f)) {

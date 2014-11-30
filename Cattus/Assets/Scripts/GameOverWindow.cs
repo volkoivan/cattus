@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class GameOverWindow: MonoBehaviour {
 	// Use this for initialization
@@ -19,3 +19,4 @@ public class GameOverWindow: MonoBehaviour {
 				}
 	}
 }
+
