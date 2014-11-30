@@ -12,7 +12,7 @@ public class DisplayScore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    guiText.text = "Score: " + (LevelManager.Score).ToString("0");
+	    guiText.text = "Score: " + (LevelManager.Score).ToString("0") + "\nCoins: " + (Player.Money).ToString();
 	}
     void OnGUI()
     {

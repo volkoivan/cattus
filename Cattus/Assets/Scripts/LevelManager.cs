@@ -8,6 +8,11 @@ public class LevelManager : MonoBehaviour {
     public AudioSource bMusic;
     private float timerMultiplier;
     private float timerScore;
+    public Font CustomFont;
+    private bool isTextShown = false;
+    private bool isMoneyAdded = false;
+
+
 
     // Use this for initialization
     private void Start() {
@@ -18,6 +23,7 @@ public class LevelManager : MonoBehaviour {
     private void Update() {
         PauseCheck();
         ScoreUpdater();
+        CheckEscape();
         //MultiplierUpdater();
         GameOverCheck();
     }
@@ -26,6 +32,23 @@ public class LevelManager : MonoBehaviour {
         Pause.isPaused = true;
         Time.timeScale = 0;
         bMusic.volume = 0.25f;
+    }
+
+    private void CallTextOnGameOver() {
+        gameObject.AddComponent("GUIText");
+        gameObject.guiText.fontSize = 16;
+        gameObject.guiText.color = Color.black;
+        gameObject.guiText.font = CustomFont;
+        gameObject.guiText.alignment = TextAlignment.Center;
+        gameObject.guiText.anchor = TextAnchor.MiddleCenter;
+        gameObject.guiText.text = "Press Space to restart\nPress Esc to go to the Main Menu";
+
+
+        gameObject.AddComponent<PlacementText>();
+        var b = gameObject.GetComponent<PlacementText>();
+        b.xOffset1 = 50;
+        b.yOffset1 = 40;
+
     }
 
     private void PauseCheck() {
@@ -38,7 +61,15 @@ public class LevelManager : MonoBehaviour {
 
     private void GameOverCheck() {
         if (isGameOver) {
+            if (!isMoneyAdded) {
+                isMoneyAdded = true;
+                Variables.CoinsCounter += Player.Money;
+            }
             SetOnPause();
+            if (!isTextShown) {
+                isTextShown = true;
+                CallTextOnGameOver();
+            }
             if (isGameOverCreated == 0) {
                 GameOverMaker();
                 isGameOverCreated = 1;
@@ -49,6 +80,16 @@ public class LevelManager : MonoBehaviour {
                 Application.LoadLevel("test");
                 ResumeGame();
             }
+        }
+    }
+
+    private void CheckEscape() {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            isGameOver = false;
+            Score = 0;
+            ResumeGame();
+            Application.LoadLevel("Main_Menu");
         }
     }
 
