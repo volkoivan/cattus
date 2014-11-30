@@ -46,6 +46,7 @@ public class Player : MonoBehaviour {
         if (col != null) {
             if (col.gameObject.tag == "Enemy") {
                 LevelManager.isGameOver = true;
+
             }
         }
     }

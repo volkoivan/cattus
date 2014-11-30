@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
+    public static int isGameOverCreated = 0;
     public static bool isGameOver = false;
     public static float Score = 0;
+    public GameObject _gameover;
     public AudioSource bMusic;
-    private float timerScore;
     private float timerMultiplier;
+    private float timerScore;
 
     // Use this for initialization
     private void Start() {
@@ -28,8 +30,7 @@ public class LevelManager : MonoBehaviour {
 
     private void PauseCheck() {
         // нажатие P - пауза
-        if (Input.GetKeyUp(KeyCode.P))
-        {
+        if (Input.GetKeyUp(KeyCode.P)) {
             if (!Pause.isPaused) SetOnPause();
             else ResumeGame();
         }
@@ -38,6 +39,11 @@ public class LevelManager : MonoBehaviour {
     private void GameOverCheck() {
         if (isGameOver) {
             SetOnPause();
+            /*if (isGameOverCreated == 0) {
+                GameOverMaker();
+                isGameOverCreated = 1;
+            }*/
+            // пока нет рамки
             if (Input.GetKeyUp(KeyCode.Space)) {
                 isGameOver = false;
                 Score = 0;
@@ -47,24 +53,30 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    public void GameOverMaker() {
+        Instantiate(_gameover);
+    }
+
+
     private void ResumeGame() {
         Pause.isPaused = false;
         Time.timeScale = 1;
         bMusic.volume = 1f;
     }
 
-    //Увеличивает счет на ScoreMultiplayer каждую секунду
+//Увеличивает счет на ScoreMultiplayer каждую секунду
+
 
     private void ScoreUpdater() {
         if (!Pause.isPaused) {
-                Score += Time.deltaTime*5;
-            }
+            Score += Time.deltaTime*5;
         }
     }
+}
 
-    //Увеличивает счет на ScoreMultiplayer каждую секунду
+//Увеличивает счет на ScoreMultiplayer каждую секунду
 
-   /* private void MultiplierUpdater()
+/* private void MultiplierUpdater()
     {
         if (!Pause.isPaused)
         {
