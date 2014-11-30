@@ -5,6 +5,7 @@ public class LevelManager : MonoBehaviour {
     public static bool isGameOver = false;
     public static float Score = 0;
     public GameObject _gameover;
+	public GameObject _gameovertext;
     public AudioSource bMusic;
     private float timerMultiplier;
     private float timerScore;
@@ -41,6 +42,7 @@ public class LevelManager : MonoBehaviour {
             SetOnPause();
             if (isGameOverCreated == 0) {
                 GameOverMaker();
+				//GameOverTextMaker();
                 isGameOverCreated = 1;
             }
             if (Input.GetKeyUp(KeyCode.Space)) {
@@ -55,9 +57,12 @@ public class LevelManager : MonoBehaviour {
     public void GameOverMaker() {
         Instantiate(_gameover);
     }
-
-
-    private void ResumeGame() {
+	public void GameOverTextMaker() {
+		Instantiate(_gameovertext);
+	}
+	
+	
+	private void ResumeGame() {
         Pause.isPaused = false;
         Time.timeScale = 1;
         bMusic.volume = 1f;

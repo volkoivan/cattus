@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class PlacementMenu : MonoBehaviour {
-    public float xOffset1, yOffset1;
+    public static float xOffset1, yOffset1;
 
     // Use this for initialization
     private void Start() {

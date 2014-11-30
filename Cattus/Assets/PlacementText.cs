@@ -6,8 +6,8 @@ public class PlacementText : MonoBehaviour {
 
     // Use this for initialization
     private void Start() {
-        gameObject.transform.position =
+        gameObject.guiText.transform.position =
             Camera.main.ScreenToViewportPoint(new Vector3(Camera.main.pixelWidth/100*xOffset1,
-                Camera.main.pixelHeight/100*yOffset1, gameObject.transform.position.z));
+                Camera.main.pixelHeight/100*yOffset1, gameObject.guiText.transform.position.z));
     }
 }
