@@ -28,13 +28,11 @@ public class Player : MonoBehaviour {
     } */
 
     private void UpdateControl() {
+		Debug.Log (Variables.ScreenRight + "RIGHT" + gameObject.transform.position.x);
+		Debug.Log (gameObject.renderer.bounds.size.x + "test");
         if ((Input.GetKeyUp(KeyCode.Space) && !Pause.isPaused) ||
-            ((direction == 1) &&
-             (gameObject.transform.position.x + (gameObject.renderer.bounds.size.x/2) >
-              Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)) ||
-            ((direction == -1) &&
-             (gameObject.transform.position.x - (gameObject.renderer.bounds.size.x/2) <
-              Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x))) {
+            ((direction == 1) && ((transform.position.x+renderer.bounds.size.x/2) >= Variables.ScreenRight)) ||
+            ((direction == -1) && ((transform.position.x-renderer.bounds.size.x/2) <= Variables.ScreenLeft))) {
             direction *= -1;
             rigidbody2D.AddForce(new Vector2(200*direction, 0));
             transform.localScale = new Vector3(objScale*direction, objScale, objScale);
