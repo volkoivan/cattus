@@ -39,11 +39,10 @@ public class LevelManager : MonoBehaviour {
     private void GameOverCheck() {
         if (isGameOver) {
             SetOnPause();
-            /*if (isGameOverCreated == 0) {
+            if (isGameOverCreated == 0) {
                 GameOverMaker();
                 isGameOverCreated = 1;
-            }*/
-            // пока нет рамки
+            }
             if (Input.GetKeyUp(KeyCode.Space)) {
                 isGameOver = false;
                 Score = 0;

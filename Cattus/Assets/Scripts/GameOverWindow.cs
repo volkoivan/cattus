@@ -5,7 +5,7 @@ public class GameOverWindow: MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		//transform.position = new Vector3 (0,Variables.ScreenTop+gameObject.renderer.bounds.size.y/2,0);
-		transform.position = new Vector3 (0, gameObject.renderer.bounds.size.y / 2, 0);
+		transform.position = new Vector3 (0, gameObject.renderer.bounds.size.y / 2, 1);
 		transform.localScale = new Vector3 (0, 0, 1);
 		//gameObject.rigidbody2D.AddForce(new Vector2 (0, -1000));
 	}
