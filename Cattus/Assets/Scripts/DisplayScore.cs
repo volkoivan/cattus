@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using System.Collections;
 
 public class DisplayScore : MonoBehaviour {
+    public GUIStyle style;
+    public Texture2D Rectangle;
 	// Use this for initialization
 	void Start () {
-	    
 
 	}
 	
@@ -12,6 +14,8 @@ public class DisplayScore : MonoBehaviour {
 	void Update () {
 	    guiText.text = "Score: " + (LevelManager.Score).ToString("0");
 	}
-
+    void OnGUI()
+    {
+    }
 
 }
