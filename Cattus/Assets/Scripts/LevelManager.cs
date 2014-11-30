@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour {
 										isGameOver = false;
 										Application.LoadLevel ("test");
 										ResumeGame ();
+										isGameOverCreated = 0;
 								}
 						}
 		}
