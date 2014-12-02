@@ -9,6 +9,11 @@ public class LevelManager : MonoBehaviour {
     public AudioSource bMusic;
     private float timerMultiplier;
     private float timerScore;
+    public Font CustomFont;
+    private bool isTextShown = false;
+    private bool isMoneyAdded = false;
+
+
 
     // Use this for initialization
     private void Start() {
@@ -19,6 +24,7 @@ public class LevelManager : MonoBehaviour {
     private void Update() {
         PauseCheck();
         ScoreUpdater();
+        CheckEscape();
         //MultiplierUpdater();
         GameOverCheck();
     }
@@ -28,7 +34,24 @@ public class LevelManager : MonoBehaviour {
         Time.timeScale = 0;
         bMusic.volume = 0.25f;
     }
+	//выводит статистику, если игра закончена
+    private void CallTextOnGameOver() {
+        gameObject.AddComponent("GUIText");
+        gameObject.guiText.fontSize = 13;
+        gameObject.guiText.color = Color.red;
+        gameObject.guiText.font = CustomFont;
+        gameObject.guiText.alignment = TextAlignment.Center;
+        gameObject.guiText.anchor = TextAnchor.MiddleCenter;
+		gameObject.guiText.text = "Game Over!\n\nScore: " + (LevelManager.Score).ToString ("0") + "\n\nPress Space \nto start again\n\nPress Esc \nto exit to Main Menu";
 
+
+        gameObject.AddComponent<PlacementText>();
+        var b = gameObject.GetComponent<PlacementText>();
+        b.xOffset1 = 50;
+        b.yOffset1 = 56.5f;
+
+    }
+ 
     private void PauseCheck() {
         // нажатие P - пауза
         if (Input.GetKeyUp(KeyCode.P)) {
@@ -36,10 +59,17 @@ public class LevelManager : MonoBehaviour {
             else ResumeGame();
         }
     }
-
     private void GameOverCheck() {
         if (isGameOver) {
+            if (!isMoneyAdded) {
+                isMoneyAdded = true;
+                Variables.CoinsCounter += Player.Money;
+            }
             SetOnPause();
+            if ((!isTextShown) && (GameOverWindow.isWindowCreated == 1)) {
+                isTextShown = true;
+                CallTextOnGameOver();
+            }
             if (isGameOverCreated == 0) {
                 GameOverMaker();
 				//GameOverTextMaker();
@@ -49,18 +79,25 @@ public class LevelManager : MonoBehaviour {
                 isGameOver = false;
                 Score = 0;
                 Application.LoadLevel("test");
+				isGameOverCreated = 0;
                 ResumeGame();
             }
         }
     }
 
+    private void CheckEscape() {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            isGameOver = false;
+            Score = 0;
+            ResumeGame();
+            Application.LoadLevel("Main_Menu");
+        }
+    }
+
     public void GameOverMaker() {
         Instantiate(_gameover);
-    }
-	public void GameOverTextMaker() {
-		Instantiate(_gameovertext);
-	}
-	
+    }	
 	
 	private void ResumeGame() {
         Pause.isPaused = false;
