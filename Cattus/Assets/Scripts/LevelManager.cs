@@ -11,11 +11,13 @@ public class LevelManager : MonoBehaviour {
     public Font CustomFont;
     private bool isTextShown = false;
     private bool isMoneyAdded = false;
+    public ParticleSystem particle_Start;
 
 
 
     // Use this for initialization
     private void Start() {
+        Instantiate(particle_Start);
         audio.Play();
     }
 
