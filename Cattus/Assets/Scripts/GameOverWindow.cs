@@ -20,7 +20,11 @@ public class GameOverWindow: MonoBehaviour {
 				if (gameObject.transform.localScale != new Vector3 (0.22f, 0.22f, 1)) {
 						gameObject.transform.localScale += new Vector3 (0.02f, 0.02f, 0);
 				} else 
+						if (LevelManager.isGameOver) {
 						isWindowCreated = 1;
+				} else {
+						isWindowCreated = 0;
+				}
 		}
 }
 

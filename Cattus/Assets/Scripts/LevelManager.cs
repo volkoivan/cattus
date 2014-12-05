@@ -66,34 +66,35 @@ public class LevelManager : MonoBehaviour {
                 Variables.CoinsCounter += Player.Money;
             }
             SetOnPause();
-            if ((!isTextShown) && (GameOverWindow.isWindowCreated == 1)) {
+			if (isGameOverCreated == 0) {
+				GameOverMaker();
+				isGameOverCreated = 1;
+			}
+			if ((!isTextShown) && (GameOverWindow.isWindowCreated == 1)) {
                 isTextShown = true;
                 CallTextOnGameOver();
-            }
-            if (isGameOverCreated == 0) {
-                GameOverMaker();
-				//GameOverTextMaker();
-                isGameOverCreated = 1;
             }
             if (Input.GetKeyUp(KeyCode.Space)) {
                 isGameOver = false;
                 Score = 0;
-                Application.LoadLevel("test");
 				isGameOverCreated = 0;
+				GameOverWindow.isWindowCreated = 0;
+                Application.LoadLevel("test");
                 ResumeGame();
             }
-        }
-    }
 
-    private void CheckEscape() {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            isGameOver = false;
-            Score = 0;
-            ResumeGame();
-            Application.LoadLevel("Main_Menu");
         }
     }
+	public void CheckEscape(){
+				if (Input.GetKeyUp (KeyCode.Escape)) {
+						isGameOver = false;
+						Score = 0;
+						isGameOverCreated = 0;
+						GameOverWindow.isWindowCreated = 0;
+						ResumeGame ();
+						Application.LoadLevel ("Main_Menu");
+				}
+		}
 
     public void GameOverMaker() {
         Instantiate(_gameover);
