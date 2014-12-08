@@ -16,16 +16,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         UpdateControl();
-        //UpdateCollision();
-//        Debug.Log(Screen.width);
-//        Debug.Log(Screen.height);
     }
-
-    /* private void UpdateCollision() {
-        Debug.Log(Camera.main.WorldToScreenPoint(transform.position).x);
-        if (Camera.main.ScreenToWorldPoint(transform.position).x > 600)
-            Debug.Log("LOH");
-    } */
 
     private void UpdateControl() {
 		Debug.Log (Variables.ScreenRight + "RIGHT" + gameObject.transform.position.x);

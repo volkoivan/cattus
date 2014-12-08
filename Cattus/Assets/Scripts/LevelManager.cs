@@ -5,6 +5,7 @@ public class LevelManager : MonoBehaviour {
     public static bool isGameOver = false;
     public static float Score = 0;
     public GameObject _gameover;
+	public GameObject _gameovertext;
     public AudioSource bMusic;
     private float timerMultiplier;
     private float timerScore;
@@ -35,24 +36,24 @@ public class LevelManager : MonoBehaviour {
         Time.timeScale = 0;
         bMusic.volume = 0.25f;
     }
-
+	//выводит статистику, если игра закончена
     private void CallTextOnGameOver() {
         gameObject.AddComponent("GUIText");
-        gameObject.guiText.fontSize = 16;
-        gameObject.guiText.color = Color.black;
+        gameObject.guiText.fontSize = 13;
+        gameObject.guiText.color = Color.red;
         gameObject.guiText.font = CustomFont;
         gameObject.guiText.alignment = TextAlignment.Center;
         gameObject.guiText.anchor = TextAnchor.MiddleCenter;
-        gameObject.guiText.text = "Press Space to restart\nPress Esc to go to the Main Menu";
+		gameObject.guiText.text = "Game Over!\n\nScore: " + (LevelManager.Score).ToString ("0") + "\n\nPress Space \nto start again\n\nPress Esc \nto exit to Main Menu";
 
 
         gameObject.AddComponent<PlacementText>();
         var b = gameObject.GetComponent<PlacementText>();
         b.xOffset1 = 50;
-        b.yOffset1 = 40;
+        b.yOffset1 = 56.5f;
 
     }
-
+ 
     private void PauseCheck() {
         // нажатие P - пауза
         if (Input.GetKeyUp(KeyCode.P)) {
@@ -60,7 +61,6 @@ public class LevelManager : MonoBehaviour {
             else ResumeGame();
         }
     }
-
     private void GameOverCheck() {
         if (isGameOver) {
             if (!isMoneyAdded) {
@@ -68,39 +68,41 @@ public class LevelManager : MonoBehaviour {
                 Variables.CoinsCounter += Player.Money;
             }
             SetOnPause();
-            if (!isTextShown) {
+			if (isGameOverCreated == 0) {
+				GameOverMaker();
+				isGameOverCreated = 1;
+			}
+			if ((!isTextShown) && (GameOverWindow.isWindowCreated == 1)) {
                 isTextShown = true;
                 CallTextOnGameOver();
-            }
-            if (isGameOverCreated == 0) {
-                GameOverMaker();
-                isGameOverCreated = 1;
             }
             if (Input.GetKeyUp(KeyCode.Space)) {
                 isGameOver = false;
                 Score = 0;
+				isGameOverCreated = 0;
+				GameOverWindow.isWindowCreated = 0;
                 Application.LoadLevel("test");
                 ResumeGame();
             }
-        }
-    }
 
-    private void CheckEscape() {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            isGameOver = false;
-            Score = 0;
-            ResumeGame();
-            Application.LoadLevel("Main_Menu");
         }
     }
+	public void CheckEscape(){
+				if (Input.GetKeyUp (KeyCode.Escape)) {
+						isGameOver = false;
+						Score = 0;
+						isGameOverCreated = 0;
+						GameOverWindow.isWindowCreated = 0;
+						ResumeGame ();
+						Application.LoadLevel ("Main_Menu");
+				}
+		}
 
     public void GameOverMaker() {
         Instantiate(_gameover);
-    }
-
-
-    private void ResumeGame() {
+    }	
+	
+	private void ResumeGame() {
         Pause.isPaused = false;
         Time.timeScale = 1;
         bMusic.volume = 1f;
