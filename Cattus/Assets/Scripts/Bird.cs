@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 public class Bird : Enemy {
-    public float AdVel = 0.001f;
-    private int Direction = 1;
+    public float AdVel = 0.1f;
+    private int Direction = -1;
 
     // Use this for initialization
     private void Start() {
@@ -19,9 +19,9 @@ public class Bird : Enemy {
         VSpeed += AdVel*Direction;
         if (VSpeed > 0.1f) Direction *= -1;
         if (VSpeed < -0.1f) Direction *= -1;
-        if (gameObject.transform.position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)
+       /* if (gameObject.transform.position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x)
             gameObject.transform.position =
                 new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x*(-1),
-                    gameObject.transform.position.y, gameObject.transform.position.z);
+                    gameObject.transform.position.y, gameObject.transform.position.z);*/
     }
 }

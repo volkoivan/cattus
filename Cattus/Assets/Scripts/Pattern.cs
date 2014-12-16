@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using System.Collections;
 
-public class Pattern{
+public class Pattern: MonoBehaviour{
     public bool IsFinished = false;
 
     Dictionary<int, GameObject> _enemies = new Dictionary<int, GameObject>();
