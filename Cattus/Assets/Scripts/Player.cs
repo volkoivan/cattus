@@ -10,8 +10,8 @@ public class Player : MonoBehaviour {
         direction = 1; //  1: right;   -1:left;
         transform.localScale = new Vector3(-objScale, objScale, objScale);
         rigidbody2D.AddForce(new Vector2(100, 0));
-        Debug.Log(Camera.main.orthographicSize);
-        Debug.Log(Camera.main.aspect*Camera.main.orthographicSize);
+        //Debug.Log(Camera.main.orthographicSize);
+        //Debug.Log(Camera.main.aspect*Camera.main.orthographicSize);
     }
 
     private void Update() {
@@ -19,8 +19,8 @@ public class Player : MonoBehaviour {
     }
 
     private void UpdateControl() {
-		Debug.Log (Variables.ScreenRight + "RIGHT" + gameObject.transform.position.x);
-		Debug.Log (gameObject.renderer.bounds.size.x + "test");
+		//Debug.Log (Variables.ScreenRight + "RIGHT" + gameObject.transform.position.x);
+		//Debug.Log (gameObject.renderer.bounds.size.x + "test");
         if ((Input.GetKeyUp(KeyCode.Space) && !Pause.isPaused) ||
             ((direction == 1) && ((transform.position.x+renderer.bounds.size.x/2) >= Variables.ScreenRight)) ||
             ((direction == -1) && ((transform.position.x-renderer.bounds.size.x/2) <= Variables.ScreenLeft))) {

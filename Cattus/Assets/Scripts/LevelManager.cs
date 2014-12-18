@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour {
         gameObject.AddComponent<PlacementText>();
         var b = gameObject.GetComponent<PlacementText>();
         b.xOffset1 = 50;
-        b.yOffset1 = 56.5f;
+        b.yOffset1 = 50;
 
     }
  
